@@ -19,8 +19,6 @@ router.get('/addProduct',(req,res)=>{
 
 
 router.post('/addProductProcess',async (req,res)=>{
-    console.log(req.body)
-    console.log('in root')
     const newproduct = new Product({
         id:req.body.id,
         name:req.body.name,    
@@ -28,10 +26,8 @@ router.post('/addProductProcess',async (req,res)=>{
         description:req.body.description
     });
 
-    console.log(newproduct)
-    const result = await newproduct.save()
-    console.log(result)
-    res.render('products',{title:'My First Node App.'});
-});
+    await newproduct.save()
+    res.render('products',{title:'My First Node App.'})
+})
 
-exports.router = router;
+exports.router = router
