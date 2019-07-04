@@ -30,4 +30,8 @@ router.post('/addProductProcess',async (req,res)=>{
     res.render('products',{title:'My First Node App.'})
 })
 
+router.get('/products',async (req,res)=>{
+    res.render('products',{prod:await Product.find()});
+});
+
 exports.router = router
